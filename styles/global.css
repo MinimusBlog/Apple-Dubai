@@ -1,0 +1,42 @@
+:root {
+    --color-primary: #E7C349;
+    --color-primary-hover: #AF8F06;
+    --color-secondary: #F1CD53;
+    --color-text: #FAFAFA;
+    --color-link-hover: #AFB2BF;
+    --color-bg: #272729;
+    --color-bg-medium: #2E2E2E;
+    --color-bg-light: #515153;
+    --color-stroke: #4D5064;
+    --color-footer: #101114;
+
+    --gradient: linear-gradient(169.70deg, rgb(231, 195, 73), rgb(175, 143, 6));
+
+    --border-8: 8px;
+    --border-10: 10px;
+    --border-17: 17px;
+    --layout-width: 1172px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background-color: var(--color-bg);
+    margin: 0;
+    font-family: 'Fira Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+}
+
