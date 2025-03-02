@@ -1,10 +1,12 @@
 <?php 
 session_start();
-if (!isset($_SESSION['loggedin'])) {
+if (!isset($_SESSION['auth'])) {
     header("Location: /auth/login.php");
     exit();
 }
 ?>
+
+<?php include '../includes/header.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +20,6 @@ if (!isset($_SESSION['loggedin'])) {
         unset($_SESSION['message']);
     }
     ?>
-    <h1>Добро пожаловать!</h1>
+    <h1>Добро пожаловать на дашборд!</h1>
 </body>
 </html>

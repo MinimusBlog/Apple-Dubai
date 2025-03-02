@@ -13,7 +13,8 @@ if (!empty($_POST['password']) and !empty($_POST['login'])) {
 
     if (!empty($user)) {
         $_SESSION['message'] = "Вы успешно авторизовались!";
-        $_SESSION['loggedin'] = true;
+        $_SESSION['auth'] = true;
+        $_SESSION['login'] = $login;
         header("Location: /dashboard.php");
         exit();
     } else {
@@ -22,7 +23,7 @@ if (!empty($_POST['password']) and !empty($_POST['login'])) {
 }
 ?>
 
-<?php if (empty($_SESSION['loggedin'])): ?>
+<?php if (empty($_SESSION['auth'])): ?>
     <form action="/auth/login.php" method="POST">
         <input name="login">
         <input name="password" type="password">

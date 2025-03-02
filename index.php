@@ -341,6 +341,13 @@
                     </div>
                 </article>
             </div>
+
+            <?php //Закрыть часть страницы для неавторизованного пользователя
+                if (!empty($_SESSION['auth'])) {
+                    echo 'Статьи только для авторизованного пользователя';
+                }
+            ?>
+
             <div class="button-more">
                 <a href="#" class="button button_ghost">Все публикации</a>
             </div>
@@ -399,4 +406,26 @@
     </footer>
 </body>
 
+</html>
+
+<?php 
+session_start();
+?>
+
+<?php include 'includes/header.php'; ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <?php 
+    if (isset($_SESSION['message'])) {
+        echo "<p>" . $_SESSION['message'] . "</p>";
+        unset($_SESSION['message']);
+    }
+    ?>
+    <h1>Welcome to the Home Page</h1>
+</body>
 </html>
