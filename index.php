@@ -28,7 +28,7 @@
                     <li class="menu__item"><a href="#">База знаний</a></li>
                 </ul>
             </nav>
-            <a class="header__login" href="#" aria-label="Вход в личный кабинет">
+            <a class="header__login" href="auth/auth.php" aria-label="Вход в личный кабинет">
                 <img src="./images/user.svg" alt="Иконка пользователя" />
                 <div>Вход</div>
             </a>

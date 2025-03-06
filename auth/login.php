@@ -1,22 +1,25 @@
 <?php 
 session_start();
-?>
+include 'db.php';
 
-<?php 
 if (!empty($_POST['password']) and !empty($_POST['login'])) {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE login= '$login' AND password= '$password'";
+    $query = "SELECT * FROM users WHERE login='$login'";
     $res = mysqli_query($link, $query);
     $user = mysqli_fetch_assoc($res);
 
     if (!empty($user)) {
-        $_SESSION['message'] = "Вы успешно авторизовались!";
-        $_SESSION['auth'] = true;
-        $_SESSION['login'] = $login;
-        header("Location: /dashboard.php");
-        exit();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['message'] = "Вы успешно авторизовались!";
+            $_SESSION['auth'] = true;
+            $_SESSION['login'] = $login;
+            header("Location: /dashboard.php");
+            exit();
+        } else {
+            $error_message = "Неверный логин или пароль!";
+        }
     } else {
         $error_message = "Неверный логин или пароль!";
     }
