@@ -32,8 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $query = "INSERT INTO users (login, password, email) VALUES ('$login', '$hashedPassword', '$email')";
                 if (mysqli_query($link, $query)) {
+                    $user_id = mysqli_insert_id($link);
                     $_SESSION['auth'] = true;
                     $_SESSION['login'] = $login;
+                    $_SESSION['id'] = $user_id;
                     header("Location: ../auth/lk.php");
                     exit();
                 } else {
@@ -58,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['message'] = "Вы успешно авторизовались!";
                     $_SESSION['auth'] = true;
                     $_SESSION['login'] = $login;
+                    $_SESSION['id'] = $user['id'];
                     header("Location: ../auth/lk.php");
                     exit();
                 } else {
@@ -102,6 +105,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" name="login_submit" value="Login">
         <?php if ($authError) echo "<p style='color:red;'>$authError</p>"; ?>
     </form>
-    <a href="../index.php">Back</a>
 </body>
 </html>

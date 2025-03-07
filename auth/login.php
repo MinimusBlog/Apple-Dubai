@@ -15,7 +15,7 @@ if (!empty($_POST['password']) and !empty($_POST['login'])) {
             $_SESSION['message'] = "Вы успешно авторизовались!";
             $_SESSION['auth'] = true;
             $_SESSION['login'] = $login;
-            header("Location: /dashboard.php");
+            header("Location: ../lk.php");
             exit();
         } else {
             $error_message = "Неверный логин или пароль!";
